@@ -24,9 +24,25 @@ const Login = () => {
       .post("http://localhost:3000/auth/adminlogin", profile)
       .then((result) => {
         console.log(result);
-      }).catch = (error) => {
-      console.log(`An error occured: ${error}`);
-    };
+        setProfile({ username: "", password: "", tick: false });
+      })
+      .catch((error) => {
+        console.log(`An error occured: ${error}`);
+      });
+  };
+
+  const getLoggedInUsers = (e) => {
+    e.preventDefault();
+    axios
+      .get("http://localhost:3000/users")
+      .then((result) => {
+        result.data.map((user) => {
+          console.log(user.username, user.password);
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   useEffect(() => {
@@ -90,6 +106,14 @@ const Login = () => {
           <label htmlFor="tick">You agree with the terms & conditions</label>
         </div>
       </form>
+      <div className="flex justify-center items-center p-1">
+        <button
+          onClick={getLoggedInUsers}
+          className="w-full mt-2 text-white bg-blue-800 cursor-pointer px-3 py-1 font-bold hover:bg-green-500 rounded-md"
+        >
+          Get Logged In Users
+        </button>
+      </div>
     </div>
   );
 };
