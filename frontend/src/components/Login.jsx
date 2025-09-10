@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./Styles.css";
 import { DoorClosedLocked, LockKeyhole } from "lucide-react";
 import axios from "axios";
+
+
 const Login = () => {
   const [profile, setProfile] = useState({
     username: "",
@@ -20,29 +22,15 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:3000/auth/adminlogin", profile)
-      .then((result) => {
-        console.log(result);
-        setProfile({ username: "", password: "", tick: false });
-      })
-      .catch((error) => {
-        console.log(`An error occured: ${error}`);
-      });
-  };
-
-  const getLoggedInUsers = (e) => {
-    e.preventDefault();
-    axios
-      .get("http://localhost:3000/users")
-      .then((result) => {
-        result.data.map((user) => {
-          console.log(user.username, user.password);
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    // axios
+    //   .post("http://localhost:3000/auth/adminlogin", profile)
+    //   .then((result) => {
+    //     console.log(result);
+    //     setProfile({ username: "", password: "", tick: false });
+    //   })
+    //   .catch((error) => {
+    //     console.log(`An error occured: ${error}`);
+    //   });
   };
 
   useEffect(() => {
@@ -106,14 +94,6 @@ const Login = () => {
           <label htmlFor="tick">You agree with the terms & conditions</label>
         </div>
       </form>
-      <div className="flex justify-center items-center p-1">
-        <button
-          onClick={getLoggedInUsers}
-          className="w-full mt-2 text-white bg-blue-800 cursor-pointer px-3 py-1 font-bold hover:bg-green-500 rounded-md"
-        >
-          Get Logged In Users
-        </button>
-      </div>
     </div>
   );
 };

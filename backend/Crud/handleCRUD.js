@@ -59,7 +59,7 @@ export const readAllUsers = async (req, res) => {
 };
 
 export const updateUser = async (req, res) => {
-  const userId = req.params.body || req.body.id;
+  const userId = req.params.id || req.body.id;
   try {
     const user = await staff.findByIdAndUpdate(userId, req.body, { new: true });
     if (!user) {
