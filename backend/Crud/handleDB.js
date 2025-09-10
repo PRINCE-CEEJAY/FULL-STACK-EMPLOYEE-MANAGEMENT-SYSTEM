@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const URL = process.env.URL;
+const URL = process.env.URL || 3000;
 
 export const connectDB = async () => {
   try {
@@ -9,3 +9,12 @@ export const connectDB = async () => {
     console.log("Unable to connect to Database", error);
   }
 };
+const ceesund = mongoose.Schema({
+  name: String,
+  email: String,
+  staffId: Number,
+  dateEmployed: Number,
+  salary: Number,
+  payDay: Number,
+});
+export const staff = mongoose.model("staff", ceesund);
