@@ -1,15 +1,3 @@
-.login-page {
-  background: url("images/hr.png");
-  background: linear-gradient(
-    rgb(11, 11, 0.5),
-    rgb(10, 10, 0.5),
-    url("images/hr.png")
-  );
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% 120%;
-}
-
 .input {
   color: black;
   background-color: rgb(227, 222, 231);

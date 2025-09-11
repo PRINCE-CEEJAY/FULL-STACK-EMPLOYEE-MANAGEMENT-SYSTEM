@@ -3,7 +3,7 @@ import "./Styles.css";
 import { DoorClosedLocked, LockKeyhole } from "lucide-react";
 import axios from "axios";
 
-const Register = ({ setRegistered }) => {
+const AddUser = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -46,7 +46,7 @@ const Register = ({ setRegistered }) => {
         console.log(result);
         alert(result.data.message);
         setFormData(emptyForm);
-        setRegistered(true);
+        // setRegistered((prev) => !prev);
       })
       .catch((error) => {
         console.log(`An error occured: ${error}`);
@@ -55,7 +55,7 @@ const Register = ({ setRegistered }) => {
   };
 
   return (
-    <div className="flex w-full flex-col justify-center items-center min-h-screen login-page">
+    <div className="flex w-full flex-col justify-center items-center">
       <form
         className="flex flex-col  p-2 rounded-md w-80 text-purple-800  border-2 border-black"
         onSubmit={handleSubmit}
@@ -152,4 +152,4 @@ const Register = ({ setRegistered }) => {
   );
 };
 
-export default Register;
+export default AddUser;
